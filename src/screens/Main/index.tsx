@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Callout } from 'react-native-maps';
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
 import { MaterialIcons } from '@expo/vector-icons';
+import AppLoading from 'expo-app-loading';
 
 import { devs } from '../../utils/devs';
 
@@ -76,9 +77,7 @@ export function Main({ navigation }) {
             console.log(tech)
 
             devs.map(dev => {
-                  // if (dev.techs.includes(tech.toLowerCase())) {
-                  //       setFilteredDevs([...filteredDevs, dev]);
-                  // }
+                  
                   dev.techs.includes(tech.toLowerCase())
                         && setFilteredDevs([...filteredDevs, dev])
                   console.log(dev.techs.includes(tech))
@@ -99,7 +98,6 @@ export function Main({ navigation }) {
             <Container>
                   {currentRegion[0] !== 0 && (
                         <Map
-                              // style={{ width: '100%', height: '100%' }}
                               loadingEnabled={currentRegion[0] === 0}
                               initialRegion={{
                                     latitude: currentRegion[0],
@@ -110,7 +108,7 @@ export function Main({ navigation }) {
                         >
                               {devs.map(dev => (
                                     dev.techs.includes(tech.toLowerCase()) ?
-                                          <MarkerBtn onPress={() => handleDevDetail(dev.github_username)}>
+                                          <MarkerBtn key={dev.id} onPress={() => handleDevDetail(dev.github_username)}>
                                                 <DevMarker
                                                       key={String(dev.id)}
                                                       coordinate={{
@@ -123,7 +121,7 @@ export function Main({ navigation }) {
                                                       />
                                                 </DevMarker>
                                           </MarkerBtn>
-                                          : <></>
+                                    : <></>
                               ))}
                         </Map>
                   )}
@@ -144,3 +142,33 @@ export function Main({ navigation }) {
             </Container>
       )
 }
+
+// {currentRegion[0] !== 0 && (
+//       <Map
+//             loadingEnabled={currentRegion[0] === 0}
+//             initialRegion={{
+//                   latitude: currentRegion[0],
+//                   longitude: currentRegion[1],
+//                   latitudeDelta: 0.014,
+//                   longitudeDelta: 0.014
+//             }}
+//       >
+//             {devs.map(dev => (
+//                   dev.techs.includes(tech.toLowerCase()) ?
+//                         <MarkerBtn key={dev.id} onPress={() => handleDevDetail(dev.github_username)}>
+//                               <DevMarker
+//                                     key={String(dev.id)}
+//                                     coordinate={{
+//                                           latitude: dev.latitude,
+//                                           longitude: dev.longitude
+//                                     }}
+//                               >
+//                                     <Avatar
+//                                           source={{ uri: `https://github.com/${dev.github_username}.png` }}
+//                                     />
+//                               </DevMarker>
+//                         </MarkerBtn>
+//                         : <></>
+//             ))}
+//       </Map>
+// )}

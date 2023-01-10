@@ -15,8 +15,8 @@ export const devs = [
                   'react',
                   '.net'
             ],
-            latitude: -22.9459635,
-            longitude: -43.3392554
+            latitude: -22.984601,
+            longitude: -43.218686
       },
       {
             id: 1,
@@ -33,8 +33,8 @@ export const devs = [
                   'react native',
                   'vue'
             ],
-            latitude: -22.947566,
-            longitude: -43.3407327
+            latitude: -22.985450,
+            longitude: -43.218107
       },
       {
             id: 2,
@@ -51,8 +51,8 @@ export const devs = [
                   'react native',
                   'php'
             ],
-            latitude: -22.94447,
-            longitude: -43.3406746
+            latitude: -22.985806,
+            longitude: -43.219695
       },
       {
             id: 3,
@@ -69,7 +69,7 @@ export const devs = [
                   'react native',
                   'css',
             ],
-            latitude: -22.945191,
-            longitude: -43.339285
+            latitude: -22.985924,
+            longitude: -43.218021
       },
 ]
